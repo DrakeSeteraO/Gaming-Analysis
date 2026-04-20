@@ -4,8 +4,14 @@ with sqlite3.connect("gaming_info.db") as connection:
     cursor = connection.cursor()
     
     table_names = ["User",
+                   "Wallet",
                    "Game",
-                   ]
+                   "Platform",
+                   "UserGame",
+                   "Genre",
+                   "GenreToGame",
+                   "Developer",
+                   "GameToDeveloper"]
     
     for table_name in table_names:
         
