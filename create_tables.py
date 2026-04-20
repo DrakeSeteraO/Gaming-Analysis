@@ -18,6 +18,17 @@ with sqlite3.connect("gaming_info.db") as connection:
     cursor.execute(command)
     
     
+    # Wallet Table
+    command = """
+    Create Table If Not Exists Wallet(
+        cardNumber Integer(19) Primary Key,
+        money Decimal(10,2),
+        cardType Text(10),
+        bankName Text(50)
+        );"""
+    cursor.execute(command)
+    
+    
     # Game Table
     command = """
     Create Table If Not Exists Game(
