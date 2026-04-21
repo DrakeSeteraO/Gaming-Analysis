@@ -12,7 +12,7 @@ with sqlite3.connect("gaming_info.db") as connection:
     
     for i in range(start_val, start_val + amount):
         fname = rd.choice(FIRST_NAMES)
-        card_number = rd.randint(1000000000000, 999999999999999)
+        card_number = rd.randint(1000000000000000, 9999999999999999)
 
         cursor.execute("Insert Into Wallet Values (?, ?, ?, ?);", 
                (card_number, f"{rd.random()*100:.2f}", rd.choice(CARD_TYPES), rd.choice(BANK_NAMES)))

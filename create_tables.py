@@ -14,6 +14,11 @@ with sqlite3.connect("gaming_info.db") as connection:
         cardType Text(10),
         bankName Text(50)
         check (money >= 0 and money <= 999999.99)
+        check (
+            (cardType = 'Visa' and length(cast(cardNumber as Text)) between 16 and 19) or
+            (cardType = 'Mastercard' and length(cast(cardNumber as Text)) = 16) or 
+            (cardType = 'Discover' and length(cast(cardNumber as Text)) between 16 and 19)
+        )
         );"""
     cursor.execute(command)
 
