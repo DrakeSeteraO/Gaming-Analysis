@@ -3,8 +3,8 @@ import sqlite3
 from select_data import *
 
 # Make sure to change these values
-start_val = 1
-amount = 1
+start_val = 2
+amount = 99
 
 with sqlite3.connect("gaming_info.db") as connection:
     cursor = connection.cursor()
