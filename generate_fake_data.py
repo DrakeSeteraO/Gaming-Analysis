@@ -12,11 +12,13 @@ with sqlite3.connect("gaming_info.db") as connection:
     
     for i in range(start_val, start_val + amount):
         fname = rd.choice(FIRST_NAMES)
-        cursor.execute("Insert Into User Values (?, ?, ?, ?, ?, ?, ?);", 
-                       (i, f"{rd.choice(ADJECTIVES)} {fname}", rd.choice(STATES), fname, rd.choice(LAST_NAMES), f"https:www/{rd.randint(1, 1_000_000)}",  f"https:www/{rd.randint(1, 1_000_000)}"))
-        
+        card_number = rd.randint(1000000000000, 999999999999999)
+
         cursor.execute("Insert Into Wallet Values (?, ?, ?, ?);", 
-                       (rd.randint(1000000000000, 999999999999999), f"{rd.random()*100:.2f}", rd.choice(CARD_TYPES), rd.choice(BANK_NAMES)))
+               (card_number, f"{rd.random()*100:.2f}", rd.choice(CARD_TYPES), rd.choice(BANK_NAMES)))
+
+        cursor.execute("Insert Into User Values (?, ?, ?, ?, ?, ?, ?, ?);", 
+               (i, f"{rd.choice(ADJECTIVES)} {fname}", rd.choice(STATES), fname, rd.choice(LAST_NAMES), f"https:www/{rd.randint(1, 1_000_000)}", f"https:www/{rd.randint(1, 1_000_000)}", card_number))
         
         cursor.execute("Insert Into Game Values (?, ?, ?);", 
                        (i, f"{rd.choice(GENRES)} {rd.choice(NOUNS)}", f"{rd.randint(1,12)}-{rd.randint(1,31)}-{rd.randint(1960, 2026)}"))
