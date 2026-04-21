@@ -31,7 +31,7 @@ with sqlite3.connect("gaming_info.db") as connection:
         
         for j in range(rd.randint(1, len(GENRES))):
             cursor.execute("Insert Into GenreGame Values (?, ?, ?);", 
-                           (rd.randint(1, len(GENRES)-1), i, int(j == 0)))
+                           (rd.randint(1, len(GENRES)-1), i, 'Y' if j == 0 else 'N'))
         
         cursor.execute("Insert Into Developer Values (?, ?);",
                         (i, f"{rd.choice(ADJECTIVES)} {rd.choice(NOUNS)} Studio"))

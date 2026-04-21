@@ -3,21 +3,6 @@ import sqlite3
 with sqlite3.connect("gaming_info.db") as connection:
     cursor = connection.cursor()
     
-    
-    # User Table
-    command = """
-    Create Table If Not Exists User(
-        steamID Integer Primary Key,
-        username Text(50),
-        state Text(2),
-        firsname Text(50),
-        lastname Text(50),
-        profileURL Text(50),
-        avatar Text(50)
-        );"""
-    cursor.execute(command)
-    
-    
     # Wallet Table
     command = """
     Create Table If Not Exists Wallet(
@@ -27,7 +12,20 @@ with sqlite3.connect("gaming_info.db") as connection:
         bankName Text(50)
         );"""
     cursor.execute(command)
-    
+
+    # User Table
+    command = """
+    Create Table If Not Exists User(
+        steamID Integer Primary Key,
+        username Text(50),
+        state Text(2),
+        firsname Text(50),
+        lastname Text(50),
+        profileURL Text(50),
+        avatar Text(50),
+        cardNumber Integer References Wallet(cardNumber)
+        );"""
+    cursor.execute(command)
     
     # Game Table
     command = """
@@ -73,7 +71,7 @@ with sqlite3.connect("gaming_info.db") as connection:
     Create Table If Not Exists GenreGame(
         genreID Integer References Genre(genreID),
         gameID Integer References Game(gameID),
-        isPrimary Integer(1)
+        isPrimary Text(1)
         );"""
     cursor.execute(command)
     
