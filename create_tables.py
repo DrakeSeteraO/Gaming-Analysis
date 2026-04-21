@@ -34,7 +34,7 @@ with sqlite3.connect("gaming_info.db") as connection:
     Create Table If Not Exists Game(
         gameID Integer Primary Key,
         title Text(40),
-        datePublished Text(2)
+        datePublished Text(10)
         );"""
     cursor.execute(command)
     
@@ -53,8 +53,8 @@ with sqlite3.connect("gaming_info.db") as connection:
     Create Table If Not Exists UserGame(
         steamID Integer References User(SteamID),
         gameID Integer References Game(gameID),
-        title Text(40),
-        datePublished Text(2)
+        playTime Integer,
+        datePurchased Text(10)
         );"""
     cursor.execute(command)
     
@@ -68,9 +68,9 @@ with sqlite3.connect("gaming_info.db") as connection:
     cursor.execute(command)
     
     
-    # GenreToGame
+    # GenreGame
     command = """
-    Create Table If Not Exists GenreToGame(
+    Create Table If Not Exists GenreGame(
         genreID Integer References Genre(genreID),
         gameID Integer References Game(gameID),
         isPrimary Integer(1)
@@ -87,9 +87,9 @@ with sqlite3.connect("gaming_info.db") as connection:
     cursor.execute(command)
     
     
-    # GameToDeveloper Table
+    # GameDeveloper Table
     command = """
-    Create Table If Not Exists GameToDeveloper(
+    Create Table If Not Exists GameDeveloper(
         gameID Integer References Game(gameID),
         devID Integer References Developer(devID),
         percentRevShared Decimal
