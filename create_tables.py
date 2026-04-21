@@ -2,6 +2,9 @@ import sqlite3
 
 with sqlite3.connect("gaming_info.db") as connection:
     cursor = connection.cursor()
+
+    # Enable foreign key constraints
+    cursor.execute("PRAGMA foreign_keys = ON;")
     
     # Wallet Table
     command = """
@@ -10,6 +13,7 @@ with sqlite3.connect("gaming_info.db") as connection:
         money Decimal(10,2),
         cardType Text(10),
         bankName Text(50)
+        check (money >= 0 and money <= 999999.99)
         );"""
     cursor.execute(command)
 
@@ -24,6 +28,15 @@ with sqlite3.connect("gaming_info.db") as connection:
         profileURL Text(50),
         avatar Text(50),
         cardNumber Integer References Wallet(cardNumber)
+        check (state in ('AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 
+                        'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 
+                        'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 
+                        'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 
+                        'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 
+                        'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 
+                        'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 
+                        'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 
+                        'WI', 'WY'))
         );"""
     cursor.execute(command)
     
@@ -53,6 +66,7 @@ with sqlite3.connect("gaming_info.db") as connection:
         gameID Integer References Game(gameID),
         playTime Integer,
         datePurchased Text(10)
+        check (playTime >= 0)
         );"""
     cursor.execute(command)
     
@@ -72,6 +86,7 @@ with sqlite3.connect("gaming_info.db") as connection:
         genreID Integer References Genre(genreID),
         gameID Integer References Game(gameID),
         isPrimary Text(1)
+        check (isPrimary in ('Y', 'N'))
         );"""
     cursor.execute(command)
     
@@ -91,5 +106,6 @@ with sqlite3.connect("gaming_info.db") as connection:
         gameID Integer References Game(gameID),
         devID Integer References Developer(devID),
         percentRevShared Decimal
+        check (percentRevShared between 0 and 100)
         );"""
     cursor.execute(command)
