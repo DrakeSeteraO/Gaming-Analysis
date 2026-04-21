@@ -9,9 +9,9 @@ with sqlite3.connect("gaming_info.db") as connection:
                    "Platform",
                    "UserGame",
                    "Genre",
-                   "GenreToGame",
+                   "GenreGame",
                    "Developer",
-                   "GameToDeveloper"]
+                   "GameDeveloper"]
     
     for table_name in table_names:
         

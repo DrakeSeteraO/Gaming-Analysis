@@ -10,7 +10,6 @@ with sqlite3.connect("gaming_info.db") as connection:
     cursor = connection.cursor()
     
     
-    
     for i in range(start_val, start_val + amount):
         fname = rd.choice(FIRST_NAMES)
         cursor.execute("Insert Into User Values (?, ?, ?, ?, ?, ?, ?);", 
