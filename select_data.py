@@ -12,6 +12,6 @@ PLATFORMS = ['PC', 'XBOX', 'XBOX 360', 'XBOX One', 'XBOX One S', 'XBOX One X', '
 
 GENRES = ['Horror', 'Sandbox', 'Creative', 'Adventure', 'Magic', 'War', 'FPS', 'Puzzle', 'Multiplayer', 'RPG']
 
-NOUNS = ['Dog', 'Cat', 'Cow', 'Paper', 'Sand', 'Ocean', 'Water', 'Mountain', 'Forest', 'Woods', 'Dessert', 'City', 'Party', 'Lion', 'Tiger', 'Mouse', 'Llama', 'Peak']
+NOUNS = ['Dog', 'Cat', 'Cow', 'Paper', 'Sand', 'Ocean', 'Water', 'Mountain', 'Forest', 'Woods', 'Dessert', 'City', 'Party', 'Lion', 'Tiger', 'Mouse', 'Llama', 'Peak', 'Table', 'Chair', 'Painting', 'Wall', 'Lizard', 'Floor', 'Sun', 'Mood', 'Planet', 'Cave']
 
-ADJECTIVES = ['Small', 'Tall', 'Large', 'Tiny', 'Shiny', 'Dull', 'Rough', 'Smooth', 'Fast', 'Slow', 'Happy', 'Weird', 'Angry', 'Sad', 'Scared']
+ADJECTIVES = ['Small', 'Tall', 'Large', 'Tiny', 'Shiny', 'Dull', 'Rough', 'Smooth', 'Fast', 'Slow', 'Happy', 'Weird', 'Angry', 'Sad', 'Scared', 'Smart', 'Dumb', 'Confused', 'Hairy']
