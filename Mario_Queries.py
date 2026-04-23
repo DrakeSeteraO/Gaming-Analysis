@@ -24,7 +24,7 @@ with sqlite3.connect("gaming_info.db") as connection:
         print(row)
 
     # 5. Union
-    # Find users with over 2k hours of playtime combined with devs who have a revenue share less than 30% 
+    # Find users with over 2k hours of playtime combined with devs who have a less than average revenue share
     command = """
     select u.username, 'High Playtime User' as catergory
     from User u
