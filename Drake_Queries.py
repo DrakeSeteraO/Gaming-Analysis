@@ -30,7 +30,7 @@ with sqlite3.connect("gaming_info.db") as connection:
     # 4. 6.
     # Average difference in playtime between users per game
     command = """
-    select c.firsname as first_name, c.lastname as last_name, c.username as username from Game a, UserGame b, User c where b.steamID = c.steamID and a.gameID = b.gameID and a.title = 'Puzzle Dog' and playTime > (select avg(playTime) from UserGame a, Game b where a.gameID = b.gameID and b.title = 'Puzzle Dog');
+    select c.firstname as first_name, c.lastname as last_name, c.username as username from Game a, UserGame b, User c where b.steamID = c.steamID and a.gameID = b.gameID and a.title = 'Puzzle Dog' and playTime > (select avg(playTime) from UserGame a, Game b where a.gameID = b.gameID and b.title = 'Puzzle Dog');
     """
     
     cursor.execute(command)

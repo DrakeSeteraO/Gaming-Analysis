@@ -28,7 +28,7 @@ with sqlite3.connect("gaming_info.db") as connection:
         steamID Integer Primary Key,
         username Text(50),
         state Text(2),
-        firsname Text(50),
+        firstname Text(50),
         lastname Text(50),
         profileURL Text(50),
         avatar Text(50),
